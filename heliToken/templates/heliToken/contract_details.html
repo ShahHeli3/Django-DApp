@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contract Details</title>
+</head>
+<body>
+
+<div id="contract-details" style="margin: 20px">
+    <div>
+        <button type="button" id="owner-btn" onclick="details('owner')">Owner</button>
+        <p id="owner" style="display: none">{{ owner }}</p>
+    </div>
+    <br><br>
+    <div>
+        <button type="button" id="block-reward-btn" onclick="details('block-reward')">Block Reward</button>
+        <p id="block-reward" style="display: none">{{ block_reward }}</p>
+    </div>
+    <br><br>
+    <div>
+        <button type="button" id="cap-btn" onclick="details('capital')">Capital</button>
+        <p id="capital" style="display: none">{{ capital }}</p>
+    </div>
+    <br><br>
+    <div>
+        <button type="button" id="decimal-btn" onclick="details('decimal')">Decimals</button>
+        <p id="decimal" style="display: none">{{ decimals }}</p>
+    </div>
+    <br><br>
+    <div>
+        <button type="button" id="total-supply-btn" onclick="details('total-supply')">Total Supply</button>
+        <p id="total-supply" style="display: none">{{ total_supply }}</p>
+    </div>
+</div>
+</body>
+</html>
+
+<script>
+    function details(p_id) {
+        if (document.getElementById(p_id).style.display === 'block') {
+            document.getElementById(p_id).style.display = 'none'
+        } else {
+            document.getElementById(p_id).style.display = 'block'
+        }
+    }
+</script>

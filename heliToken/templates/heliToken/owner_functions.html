@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Owner Functions</title>
+</head>
+
+<body>
+<div id="owner-functions" style="margin: 20px">
+    <div>
+        <button type="button" id="set-block-reward-btn" onclick="display('block-reward')">Set Block Reward</button>
+        <div id="block-reward" style="display: none">
+            <br>
+            <input type="text" id="new-reward" placeholder="Enter the tokens to set as block reward"
+                   class="input-text" style="width: 300px">
+            <button type="button" id="set-block-reward">Set Reward</button>
+            <div id="block-reward-response" class="response-message"></div>
+        </div>
+    </div>
+    <br><br>
+    (destroy contract
+</div>
+</body>
+</html>
+
+<script>
+    function display(id){
+        for (let i = 0; i < document.getElementsByClassName('input-text').length; i ++){
+            document.getElementsByClassName('input-text')[i].value = ''
+        }
+        for (let i = 0; i < document.getElementsByClassName('response-message').length; i ++){
+            document.getElementsByClassName('response-message')[i].innerText = ''
+        }
+
+        if (document.getElementById(id).style.display === 'none') {
+            document.getElementById(id).style.display = 'block'
+        } else {
+            document.getElementById(id).style.display = 'none'
+        }
+    }
+</script>

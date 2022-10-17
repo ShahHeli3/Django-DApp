@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User Functions</title>
+</head>
+<body>
+<div id="user-functions" style="margin: 20px">
+    <div>
+        <button type="button" id="balance-btn" onclick="display('account-balance')">Account Balance</button>
+        <div id="account-balance" style="display: none">
+            <br>
+            <input type="text" id="account-address" placeholder="Enter the public key of the account address"
+                   class="input-text" style="width: 300px">
+            <button type="button" id="get-account-balance">Know Balance</button>
+            <div id="balance" class="response-message"></div>
+        </div>
+    </div>
+    <br><br>
+    <div>
+        <button type="button" id="transfer-btn" onclick="display('transfer-tokens')">Transfer Tokens</button>
+        <div id="transfer-tokens" style="display: none">
+            <br>
+            <input type="text" id="to-address" placeholder="Enter the account address to transfer tokens to"
+                   style="width: 300px">
+            <input type="text" id="transfer-amount" placeholder="Enter the number of tokens you want to transfer"
+                   style="width: 300px">
+            <button type="button" id="transfer">Transfer</button>
+            <div id="transfer"></div>
+        </div>
+    </div>
+
+    (allowance(approve?), transferFrom, burn, burnFrom, increaseAllowance, decreaseAllowance )
+
+</div>
+
+</body>
+</html>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script>
+
+    function display(id){
+        for (let i = 0; i < document.getElementsByClassName('input-text').length; i ++){
+            document.getElementsByClassName('input-text')[i].value = ''
+        }
+        for (let i = 0; i < document.getElementsByClassName('response-message').length; i ++){
+            document.getElementsByClassName('response-message')[i].innerText = ''
+        }
+
+        if (document.getElementById(id).style.display === 'none') {
+            document.getElementById(id).style.display = 'block'
+        } else {
+            document.getElementById(id).style.display = 'none'
+        }
+    }
+
+    $('#get-account-balance').click(function () {
+        console.log("click")
+        $.ajax({
+            method: 'get',
+            url: '/get-account-balance',
+            data: {
+                'account_address': document.getElementById('account-address').value
+            },
+            success: function (response) {
+                console.log(response)
+                document.getElementById('balance').innerText = ''
+                if (response['error']) {
+                    $('#balance').append("<p>" + response['error'] + "</p>")
+                } else {
+                    $('#balance').append("<p>Token Balance: " + response['balance'] + "</p>")
+                }
+            }
+        })
+    })
+</script>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Heli Token</title>
+</head>
+
+<body>
+<h1 align="center">{{ token_name }} ({{ token_symbol }})</h1>
+
+<br><br>
+
+<div align="center">
+    <a href="{% url 'contract-details' %}"><h2>Contract Details</h2></a>
+    <a href="{% url 'user-functions' %}"><h2>User Functions</h2></a>
+    <a href="{% url 'owner-functions' %}"><h2>Owner Functions</h2></a>
+</div>
+
+
+</body>
+</html>
